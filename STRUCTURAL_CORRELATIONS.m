@@ -14,13 +14,11 @@ clc
 clearvars
 close all
 
-addpath(genpath('/home/stella/Documents/MATLAB/'));  % Add NIfTI toolbox
-scriptpath = '/media/nas_rete/Work_stella/Structural_Paper_Scripts/REVISIONS';
+addpath(genpath('/certainpath/MATLAB/'));  % Add NIfTI toolbox
+scriptpath = '/certainpath1/Structural_Paper_Scripts/REVISIONS';
 addpath(genpath(scriptpath)); % Add other functions/scripts used in the current script
-%outpath='/media/nas_rete/Work_ekaterina/SANDI_vs_R1_Glove_mni'; % Set outputpath
-outpath='/media/nas_rete/Work_stella/Structural_Paper_CorrMaps/REVISIONS'; % Set outputpath
-%outpath='/media/nas_rete/Work_stella/Structural_Paper_CorrMaps/REVISIONS/newR1maps';
-initpath = '/media/nas_rete/GLOVE_STUDY/DDC/derivatives';
+outpath='/certainpath2/Structural_Paper_CorrMaps/REVISIONS'; % Set outputpath
+initpath = '/certainpath3/derivatives';
 
 % list of subjects
 done1 = save_subfolders_list_to_txt(initpath,outpath);
@@ -42,9 +40,9 @@ includeSUBGM = 1; % calculate correlations with the inclusion of subcortical GM 
 
 %% 01) getting atlases
 
-img_path_GMatlas='/storage/shared/Atlas/HCPMMP1_on_MNI152_ICBM2009a_nlin_res_on_MNI_T1_2mm.nii.gz';
-img_path_WMatlas='/usr/local/fsl_v6062/data/atlases/JHU/JHU-ICBM-labels-2mm.nii.gz';
-img_path_subGMatlas='/media/nas_rete/GLOVE_STUDY/DDC/scripts/Harvard_Oxford/aal2.nii.gz';
+img_path_GMatlas='/certainpath4/Atlas/HCPMMP1_on_MNI152_ICBM2009a_nlin_res_on_MNI_T1_2mm.nii.gz';
+img_path_WMatlas='/fslpath/data/atlases/JHU/JHU-ICBM-labels-2mm.nii.gz';
+img_path_subGMatlas='/certainpath5/scripts/Harvard_Oxford/aal2.nii.gz';
 
 if includeSUBGM == 1
    % do something
@@ -65,7 +63,6 @@ end
 [V_angle_maps] = STR_CORR_03bis_getting_metrics(initpath);
 
 %[V_R1_maps, V_diff_maps] = STR_CORR_03_getting_metrics_newR1(initpath,parameters);
-%/media/nas_rete/Work_davide/Cardiff_MP2RAGE/derivatives/pil002/anat/pil002_desc-R1map_MP2RAGE_brain.nii.gz;
 
 %% 03bis) 
 % discarding abnormal R1 values (T1 < 500 ms)
@@ -203,7 +200,7 @@ close all
 clc
 %CorticalThickness_AcrossSubjects
 %GMfeatures_AcrossSubjects
-T = readtable('/media/nas_rete/Work_stella/Structural_Paper_Scripts/REVISIONS/HCP_labels.txt', 'Delimiter', ' ', 'ReadVariableNames', false);
+T = readtable('/certainpath/Structural_Paper_Scripts/REVISIONS/HCP_labels.txt', 'Delimiter', ' ', 'ReadVariableNames', false);
 GMROI_labelnumbers = table2array(T(:,1));
 GMROI_labelnames = table2cell(T(:,2));
 GMROI_labelnumbers_filtered = GMROI_labelnumbers(GM_ROIs_flags);
@@ -245,7 +242,7 @@ cd(outpath);
 
 % B)
 % threshold on p - showing just p<0.05
-anat_bkg_path = '/usr/local/fsl/data/standard/MNI152_T1_2mm.nii.gz';
+anat_bkg_path = '/fslpath/data/standard/MNI152_T1_2mm.nii.gz';
 h1 = corr_colormaps(anat_bkg_path,r_map_fn,p_map_fn,rPearson_fn,outpath,'fn_corr',230);
 k1 = corr_colormaps_pval(anat_bkg_path,r_map_fn,p_map_fn,rPearson_fn,outpath,'fn_corr_pval',230);
 
