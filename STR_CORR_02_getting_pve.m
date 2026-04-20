@@ -15,17 +15,17 @@ for ii = 1 : N_subj
     disp('pve')
     disp(ii)
 
-    img_path_GMpve = strcat('/storage/ekaterina/Charmed/Dati_GM_mask/',folders(ii).name,'/',folders(ii).name,'_pve_1_MNI_new.nii.gz');
+    img_path_GMpve = strcat('/certainpath/Charmed/Dati_GM_mask/',folders(ii).name,'/',folders(ii).name,'_pve_1_MNI_new.nii.gz');
     nii = load_untouch_nii(img_path_GMpve);
     V_GM_tot = double(nii.img);
     V_pve_maps{ii,1} = V_GM_tot;
     
-    img_path_WMpve = strcat('/storage/ekaterina/Charmed/Dati_GM_mask/',folders(ii).name,'/',folders(ii).name,'_pve_2_MNI_new.nii.gz');
+    img_path_WMpve = strcat('/certainpath/Charmed/Dati_GM_mask/',folders(ii).name,'/',folders(ii).name,'_pve_2_MNI_new.nii.gz');
     nii = load_untouch_nii(img_path_WMpve);
     V_WM_tot = double(nii.img);
     V_pve_maps{ii,2} = V_WM_tot;
     
-    img_path_CSFpve = strcat('/storage/ekaterina/Charmed/Dati_GM_mask/',folders(ii).name,'/',folders(ii).name,'_pve_0_MNI_new.nii.gz');
+    img_path_CSFpve = strcat('/certainpath/Charmed/Dati_GM_mask/',folders(ii).name,'/',folders(ii).name,'_pve_0_MNI_new.nii.gz');
     nii = load_untouch_nii(img_path_CSFpve);
     V_CSF_tot = double(nii.img);
     V_pve_maps{ii,3} = V_CSF_tot;
