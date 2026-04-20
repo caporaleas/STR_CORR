@@ -21,18 +21,18 @@ for ii = 1 : N_subj
         par = parameters_list{1,pp}; 
 
         if strcmp(par,'FR')
-            img_path_SANDI = strcat('/storage/ekaterina/Charmed/Dati_newFR/',folders(ii).name,'/',par,'2std.nii.gz');
+            img_path_SANDI = strcat('/certainpath/Charmed/Dati_newFR/',folders(ii).name,'/',par,'2std.nii.gz');
             nii = load_untouch_nii(img_path_SANDI);
             V_SANDI_tot = double(nii.img);
             V_diff_maps{ii,1} = V_SANDI_tot;
         elseif strcmp(par,'R1')
-            %img_path_R1 = strcat('/storage/ekaterina/Charmed/Dati_R1/',folders(ii).name,'/',par,'2std.nii.gz');
-            img_path_R1 = strcat('/media/nas_rete/Work_davide/Cardiff_MP2RAGE/derivatives/',folders(ii).name,'/',par,'2std.nii.gz');
+            %img_path_R1 = strcat('/certainpath/Charmed/Dati_R1/',folders(ii).name,'/',par,'2std.nii.gz');
+            img_path_R1 = strcat('/certainpath1/derivatives/',folders(ii).name,'/',par,'2std.nii.gz');
             nii = load_untouch_nii(img_path_R1);
             V_R1_tot = double(nii.img).*1000;
             V_R1_maps{ii,1} = V_R1_tot;
         else
-            img_path_SANDI = strcat('/storage/ekaterina/Charmed/Dati_SANDI/',folders(ii).name,'/',par,'2std.nii.gz');
+            img_path_SANDI = strcat('/certainpath/Charmed/Dati_SANDI/',folders(ii).name,'/',par,'2std.nii.gz');
             nii = load_untouch_nii(img_path_SANDI);
             V_SANDI_tot = double(nii.img);
             V_diff_maps{ii,pp-1} = V_SANDI_tot;
